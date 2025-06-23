@@ -1,22 +1,14 @@
-const form = document.querySelector('.login-form');
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); 
-
-  const { email, password } = form.elements;
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
-
-  if (emailValue === '' || passwordValue === '') {
-    alert('All form fields must be filled in');
-    return;
+  function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, 0)}`;
   }
 
-  const formData = {
-    email: emailValue,
-    password: passwordValue,
-  };
+  const button = document.querySelector('.change-color');
+  const colorSpan = document.querySelector('.color');
 
-  console.log(formData); 
-  form.reset(); 
-});
+  button.addEventListener('click', () => {
+    const newColor = getRandomHexColor();
+    document.body.style.backgroundColor = newColor;
+    colorSpan.textContent = newColor;
+  });
